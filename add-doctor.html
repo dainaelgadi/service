@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>إضافة طبيب جديد</title><link rel="stylesheet"  href="style3.css">
+ 
+</head>
+<body>
+
+  <h2>إضافة طبيب جديد</h2>
+
+  <form id="doctorForm">
+    <label>الاسم:</label>
+    <input type="text" id="name" required>
+
+    <label>التخصص:</label>
+    <select id="specialty" required>
+      <option value="">اختر التخصص</option>
+      <option value="قلب">قلب</option>
+      <option value="عظام">عظام</option>
+      <option value="أطفال">أطفال</option>
+      <option value="أعصاب">أعصاب</option>
+    </select>
+
+    <label>المواعيد (مثلاً: الأحد 9 - 12 | الثلاثاء 11 - 2):</label>
+    <textarea id="schedule" rows="3" required></textarea>
+
+    <label>رابط الصورة (اختياري):</label>
+    <input type="text" id="image" placeholder="اضف صورتك">
+
+    <button type="submit">حفظ الطبيب</button>
+  </form>
+
+<script>
+    document.getElementById("doctorForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const specialty = document.getElementById("specialty").value;
+      const schedule = document.getElementById("schedule").value;
+      const image = document.getElementById("image").value || "a.jpg"; 
+
+      const doctor = { name, specialty, schedule, image };
+
+     
+      let doctors = JSON.parse(localStorage.getItem("doctors")) || [];
+      doctors.push(doctor);
+      localStorage.setItem("doctors", JSON.stringify(doctors));
+
+      alert("تمت إضافة الطبيب بنجاح!");
+      window.location.href = "doctor.html"; 
+    });
+  </script> 
+
+</body>
+</html>

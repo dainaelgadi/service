@@ -1,0 +1,527 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+body {
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-weight: 400; /* النص العادي */
+}
+/* ___________________________العناوين الرئيسية */
+h1, h2, h3 {
+  font-weight: 700; 
+}
+/* ______________________--ا________________________لأزرار */
+button,
+.btn,
+.login-btn,
+.search-area button,
+.modal-content button {
+  background-color:   rgb(226, 151, 122); /* برتقالي */
+  color:rgb(58, 93, 87);/* أخضر */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600; 
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+button:hover,
+.btn:hover,
+.login-btn:hover,
+.search-area button:hover,
+.modal-content button:hover {
+  background-color: rgb(58, 166, 141); /* أخضر */
+  color:   rgb(226, 151, 122); /* برتقالي */
+}
+
+/*________________grid الرئيسية للصفحة_______________*/
+    .pernat{
+     
+     grid-auto-rows: auto;
+     display: grid;
+     grid-template-areas:  
+     "header "
+     " text_nav "
+     "nav "
+     "main"
+     "nav1"
+     "footer";
+   
+}
+/*_____________________header_____________________*/
+.header {
+    grid-area:header ;
+   display: grid;
+  grid-template-columns: 10% 60% 30%; /* توزيع منطقي ومتناسب */
+  gap:5px; /* قللت المسافة بين الأعمدة */
+  align-items: center;
+  background-color: rgba(255, 255, 255);
+  padding: 5px 15px; /* قللت الحشو */
+  border-radius: 15px; /* أقل استدارة */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.header > div {
+  min-width: 0;
+  overflow: hidden;
+}
+
+/*________________________ شعار الموقع _________________________________________*/
+.logo img {
+  width:150px;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/*_____________ إعدادات القوائم الثلاث في العمود الأوسط ________________________*/
+.menu-list {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-list li a {
+   color:  rgb(226, 151, 122);
+ 
+  text-decoration: none;
+  font-size: 28px;
+  padding: 20px 20px;
+  margin: 20px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.menu-list li a:hover {
+  background-color: #f1dcd5;
+} 
+.register-btn-container {
+  text-align: left; /* الزر في أقصى يسار العمود */
+  direction: rtl;
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 50px;
+}
+
+#open-register {
+  background-color: transparent;
+  color: rgb(58, 93, 87);
+   text-decoration: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+#open-register:hover {
+  background-color: #af904c;
+  color: rgb(58, 93, 87);
+}
+
+
+
+
+
+
+/*________________________________ text navترحيب________________*/
+.top-bar {
+  grid-area: text_nav;
+ text-align: right;
+  
+  padding: 20px;
+  display: flex;
+  justify-content: space-between; /* توزع بين الطرفين */
+  align-items: center;
+  padding: 10px 20px;
+  direction: rtl; /* لأن العربية من اليمين لليسار */
+}
+
+.welcome-text {
+  font-size: 22px;
+  font-weight: bold;
+  color: rgb(226, 151, 122);
+}
+
+.search-area {
+  gap: 10px;
+}
+
+.search-area input {
+  padding: 7px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+/*______________________________________nav____________________________________________________*/
+.nav {
+  
+  grid-area: nav;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  gap: 20px;
+  width: 100%;;
+  padding: 20px;
+      /* عرض أقصى للصف */
+  margin: 0 auto;  
+   border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/*------------------------------- الصورعرض-----------------------------------------*/
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.slider-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* لعرض الصورة بالكامل */
+  display: block;
+  transition: opacity 0.8s ease-in-out;
+  background-color: #fff;
+
+  /* حدود متناسقة */
+  border: 10px solid rgb(209, 220, 221);;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* ظل خفيف لجمالية */}
+
+.slider-text {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  left: 0;
+  text-align: center;
+  color: rgb(226, 151, 122);
+   background: rgba(58, 166, 141, 0.6);
+  padding: 8px 16px;
+  font-size: 18px;
+  transition: opacity 0.5s;
+}
+
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  text-align: right;
+  direction: rtl;
+}
+
+.modal-content input,
+.modal-content select,
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.modal-content .close {
+  float: left;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.join-link {
+  cursor: pointer;
+  font-weight: bold;
+  color:   rgb(226, 151, 122);
+  text-decoration: underline;
+}
+/*_____________________حجز___________________________*/
+.register_image {
+
+  width: 300px;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  padding: 40px;
+  transition: transform 0.3s ease;
+  border-radius: 12px; /* اختياري لتنعيم الزوايا */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* مظهر جميل */
+}
+
+.hover-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.hover-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(58, 93, 87, 0.7); /* خلفية شفافة */
+  color: white;
+  padding: 10px 20px;
+  font-size: 20px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* لا تعيق الضغط */
+}
+
+.hover-container:hover .hover-text {
+  opacity: 1;
+}
+
+.hover-container:hover .hover-text {
+  opacity: 1;
+}
+
+
+
+/*---------------------------form تسجيل--------------------------------*/
+
+
+.login-container {
+  width: 300px; 
+  margin: 10px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+
+.login-container input,
+.modal-content input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+
+/* النافذة المنبثقة */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  width: 300px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/*______________________________main__________________________________________*/
+
+.intro-box {
+  grid-area: main;
+ 
+  border-radius: 30px;
+  padding: 30px;
+  line-height: 1.8;
+  color:rgb(58, 93, 87);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  direction: rtl;
+  text-align: center;
+}
+
+.intro-box h2 {
+   color: rgb(226, 151, 122);
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.intro-box .lead {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+
+.intro-box .cta {
+  font-weight: bold;
+  color:  rgb(226, 151, 122);
+  margin-top: 10px;
+  font-size: 20px;
+}
+/*__________________________nav1_________________*/
+.nav1 {
+  
+  grid-area: nav1;
+  
+  gap: 20px;
+  width: 100%;;
+  padding: 20px;
+      /* عرض أقصى للصف */
+  margin: 0 auto;  
+   border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/*________________________________________footer________________________________________________*/
+
+
+
+.footer {
+   grid-area: footer;
+  background-color:  rgb(226, 151, 122);
+  color:rgb(58, 93, 87);
+  text-align: center;
+padding: 5px 10px;
+  font-size: 16px;
+  border-top: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+.footer .social-icons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.footer .social-icons img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s ease;
+}
+
+.footer .social-icons img:hover {
+  transform: scale(1.2);
+}
+/*____________________________________*/
+@media (max-width: 768px) {
+  /* ترتيب رأس الصفحة */
+  .header {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .logo img {
+    width: 120px;
+    margin: 10px auto;
+  }
+
+  .menu-list {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+  }
+
+  .menu-list li a {
+    font-size: 22px;
+    padding: 10px;
+    margin: 5px 0;
+  }
+
+  /* زر التسجيل */
+  .register-btn-container {
+    justify-content: center;
+    padding-left: 0;
+    margin-top: 10px;
+  }
+
+  #open-register {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  /* شريط الترحيب والبحث */
+  .top-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .search-area input {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  .search-area button {
+    width: 90%;
+  }
+
+  /* محتوى الصور والعروض */
+  .nav,
+  .nav1 {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .slider-container {
+    height: 250px;
+  }
+
+  .register_image {
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* نموذج الدخول */
+  .login-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  /* الفوتر */
+  .footer {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .footer .social-icons {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+}
